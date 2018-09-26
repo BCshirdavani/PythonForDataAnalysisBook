@@ -98,6 +98,79 @@ long_df.ix['5-2001']
 
 # pp.292 ***************************************************************
 # Time Series with Duplicate Indices
+dates = pd.DatetimeIndex(['1/1/2000', '1/2/2000', '1/2/2000', '1/2/2000', '1/3/2000'])
+dup_ts = pd.Series(np.arange(5), index=dates)
+dup_ts
+#   index is not unique
+dup_ts.index.is_unique
+dup_ts['1/3/2000']  # not duplicated - will show the scalar value
+dup_ts['1/2/2000']  # duplicated - will produce a slice
+#   Group or Aggregate the data
+grouped = dup_ts.groupby(level=0)
+grouped.mean()
+grouped.count()
+grouped
+
+# pp.293 ***************************************************************
+# Date Ranges, Frequencies, and Shifting
+#   converting irregular series to a fixed daily frequency
+ts
+resampler = ts.resample('D').asfreq()
+resampler
+resampler = ts.resample('D').pad()
+resampler
+
+# pp.294 ***************************************************************
+# Generating Date Ranges
+#   defualt range is daily
+index = pd.date_range('2012-04-01', '2012-06-01')
+index
+#   if you only do start or end date, then also provide the periods
+pd.date_range(start='2012-04-01', periods=20)
+pd.date_range(end='2012-06-01', periods=20)
+#   using dates of only the end of a business month BM
+pd.date_range('2000-01-01', '2000-12-01', freq='BM')
+#   date range, from a specific start time, minutes included
+pd.date_range('2012-05-02 12:56:31', periods=5)
+#   date range, with time normalized to midnight
+pd.date_range('2012-05-02 12:56:31', periods=5, normalize=True)
+
+# pp.295 ***************************************************************
+# Frequencies and Date Offsets
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
