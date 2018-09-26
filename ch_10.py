@@ -71,3 +71,37 @@ stamp
 
 # pp.290 ***************************************************************
 # Indexing, Selection, Subsetting
+stamp = ts.index[2]
+print(stamp)
+ts[stamp]
+#   passing a string that is interpretable as a date for the index
+ts['1/10/2011']
+#   makoing a longer time series
+longer_ts = pd.Series(np.random.rand(1000), index=pd.date_range('1/1/2000', periods=1000))
+longer_ts
+#       select slices based on year only
+longer_ts['2001']
+#       select slices based on year + month
+longer_ts['2001-05']
+#       slicingg using typical series index format, but with dates
+ts[datetime(2011,1,7):]
+#       range query, using dates that aren't explicitly in the series
+ts
+ts['1/6/2011':'1/11/2011']
+#       range query, using truncate method
+ts.truncate(after='1/9/2011')
+#   doing similar indexing on date ranges, for data frames now
+dates = pd.date_range('1/1/2000', periods=100, freq='W-WED')
+long_df = pd.DataFrame(np.random.randn(100,4), index = dates, columns = ['Colorado', 'Texas', 'New York', 'Ohio'])
+long_df.ix['5-2001']
+
+
+# pp.292 ***************************************************************
+# Time Series with Duplicate Indices
+
+
+
+
+
+
+
